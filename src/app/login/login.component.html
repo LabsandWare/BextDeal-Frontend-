@@ -1,0 +1,55 @@
+<section>
+  <div class="mt-5"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+        <h1>h1. Bootstrap heading</h1>
+      </div>
+      <div class="col-lg-5">
+        <div class="col-md">
+          <h4>Sign up
+            <br /><small class="text-muted">It’s easy and rewarding.</small>
+          </h4>
+          <br />
+          <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last name">
+              </div>
+            </div>
+            <br />
+            <div class="form-group row">
+              <div class="col-md">
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md">
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Create Password">
+              </div>
+            </div>
+            <div>
+              <label for="exampleInputPassword1">Birthday</label>
+            </div>
+            <form class="form-inline">
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                      <i class="fas fa-calendar-alt"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
