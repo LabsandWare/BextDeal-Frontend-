@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img src="../../assets/BextDeal.png" alt="">
+      <img src="../../assets/img/BextDeal.png" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,17 +9,42 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <div *ngIf="home" class="navbar-nav ml-auto mt-2 mt-lg-0">
         <li class="nav-item m-1">
           <a class="nav-link" href="#">How it Works?</a>
         </li>
-        <li class="nav-item m-1">
+        <li *ngIf="!currentUser" class="nav-item m-1">
           <a class="btn btn-primary login-btn btn-sm nav-link" routerLink="/login">Login</a>
         </li>
-        <li class="nav-item m-1">
+        <li *ngIf="!currentUser" class="nav-item m-1">
           <a class="btn btn-danger register-btn btn-sm nav-link" routerLink="/login">Register</a>
+        </li>
+        <li *ngIf="currentUser" class="nav-item m-1">
+          <a class="nav-link font-weight-bold" href="#">{{currentUser.FirstName}} {{currentUser.LastName}}</a><b></b>
+        </li>
+        <li *ngIf="currentUser" class="nav-item m-1">
+          <a class="btn btn-outline-success" role="button" style="color: #fff" (click)="logout(currentUser.id)">Logout</a>
         </li>
       </div>
     </div>
+    <form [formGroup]="navLoginForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="login" class="form-row">
+        <div class="col-5">
+          <input formControlName="email" class="form-control form-control-sm" type="text" placeholder="email" aria-label="email"
+              [ngClass]="{'is-valid': submitted }">
+          <div *ngIf="email.invalid" class="invalid-feedback">
+            <div>Email is required</div>
+          </div>
+        </div>
+        <div class="col-5">
+          <input formControlName="password" class="form-control form-control-sm" type="password" placeholder="password" aria-label="password"
+            [ngClass]="{'is-valid': submitted }">
+          <div *ngIf="password.invalid" class="invalid-feedback">
+            <div>Password is required</div>
+          </div>
+        </div>
+        <button [disabled]="loading" class="btn btn-outline-success btn-sm" type="submit">Login</button>
+      </div>
+    </form>
   </div>
 </nav>

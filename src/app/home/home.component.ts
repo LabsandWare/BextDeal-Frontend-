@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
+import { User } from '../_models';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,6 +10,9 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbCarouselConfig]
 })
 export class HomeComponent implements OnInit {
+
+  currentUser: User;
+  users: User[] = [];
 
   showNavigationArrows = false;
   showNavigationIndicators = false;
@@ -17,6 +22,8 @@ export class HomeComponent implements OnInit {
 
     config.showNavigationArrows = true;
     config.showNavigationIndicators = true;
+
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
    }
 
   ngOnInit() {

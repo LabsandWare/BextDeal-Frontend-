@@ -11,33 +11,45 @@
             <br /><small class="text-muted">It’s easy and rewarding.</small>
           </h4>
           <br />
-          <form>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="First name">
+                <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="First name"  required />
+                <div *ngIf="submitted" class="invalid-feedback" >
+                  <div *ngIf="">First Name is required</div>
+                </div>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Last name">
+                <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="Last name"  required />
+                <div *ngIf="submitted" class="invalid-feedback">
+                  <div *ngIf="">Last Name is required</div>
+                </div>
               </div>
             </div>
             <br />
             <div class="form-group row">
               <div class="col-md">
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                <input formControlName="email" type="email" class="form-control" id="inputEmail4" placeholder="Email"  required />
+                <div *ngIf="submitted" class="invalid-feedback">
+                  <div *ngIf="">Email is required</div>
+                </div>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-md">
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Create Password">
+                <input formControlName="password" type="password" class="form-control" id="password" placeholder="Create Password" required />
+                <div *ngIf="submitted" class="invalid-feedback">
+                  <div *ngIf="">Password is required</div>
+                </div>
               </div>
             </div>
             <div>
               <label for="exampleInputPassword1">Birthday</label>
             </div>
-            <form class="form-inline">
+            <div class="form-inline">
               <div class="form-group">
                 <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                  <input formControlName="dob" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker" required />
                   <div class="input-group-append">
                     <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
                       <i class="fas fa-calendar-alt"></i>
@@ -45,8 +57,9 @@
                   </div>
                 </div>
               </div>
-            </form>
-            
+            </div>
+            <br />
+            <button [disabled]="loading" class="btn btn-outline-success btn-sm btn-block" type="submit"> Sign Up </button>
           </form>
         </div>
       </div>

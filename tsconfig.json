@@ -16,6 +16,17 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "error": [
+        "dist/error"
+      ],
+      "error/*": [
+        "dist/error/*"
+      ],
+      "jszip": [
+        "node_modules/jszip/dist/jszip.min.js"
+      ]
+    }
   }
 }
